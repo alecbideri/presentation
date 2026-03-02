@@ -326,6 +326,7 @@ body:hover .controls { opacity: 1; }
     </div>
     
     <div class="no-scrollbar" style="display: flex; flex-direction: column; gap: 24px; flex: 1; overflow-y: auto; padding-bottom: 40px;">
+      <!-- Top Row: Compact Text + Video 1 -->
       <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 24px; min-height: 220px; flex-shrink: 0;">
         <div class="glass animate delay-1" style="padding: 20px; justify-content: center;">
           <h3 style="font-size: 18px; margin-bottom: 12px;">Phase 5 & 6 Objectives</h3>
@@ -354,14 +355,23 @@ body:hover .controls { opacity: 1; }
         </div>
       </div>
       
-      <div class="animate delay-3" style="flex-shrink: 0; height: 420px; width: 100%;">
+      <!-- Bottom Row: Grid of Two High-Impact Videos -->
+      <div class="animate delay-3" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex-shrink: 0; height: 420px; width: 100%;">
         <div class="asset-frame">
            <video src="tBnfhq2XGQnPwBPj.mp4" autoplay loop muted playsinline onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>
            <div class="placeholder-text" style="display:none;">
              <i data-lucide="play" size="32"></i>
-             <p>Predictive Scouting & Performance Intelligence Demo</p>
+             <p>Predictive Scouting Intelligence Placeholder</p>
            </div>
-           <p style="position: absolute; bottom: 12px; left: 16px; font-size: 12px; opacity: 0.8; font-weight: 600; color: var(--text);">Scouting Intelligence & Predictive Load Models</p>
+           <p style="position: absolute; bottom: 12px; left: 16px; font-size: 12px; opacity: 0.8; font-weight: 600; color: var(--text);">Scouting & Recruitment Intelligence</p>
+        </div>
+        <div class="asset-frame">
+           <video src="BOJJgx8N7aYUx2K5.mp4" autoplay loop muted playsinline onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>
+           <div class="placeholder-text" style="display:none;">
+             <i data-lucide="play" size="32"></i>
+             <p>National Performance Analytics Placeholder</p>
+           </div>
+           <p style="position: absolute; bottom: 12px; left: 16px; font-size: 12px; opacity: 0.8; font-weight: 600; color: var(--text);">National Performance & Predictive Load Models</p>
         </div>
       </div>
     </div>
