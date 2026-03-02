@@ -3,16 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ganza — Strategic Ministerial Presentation</title>
+<title>Ganza — Strategic Presentation 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>
 :root {
   --emerald: #10B981;
-  --glass: rgba(255, 255, 255, 0.05);
-  --border: rgba(255, 255, 255, 0.12);
-  --bg: #000000;
+  --blue: #2563eb;
+  --blue-soft: rgba(37, 99, 235, 0.22); /* Highly visible premium dots */
+  --glass: rgba(255, 255, 255, 0.85);
+  --border: rgba(37, 99, 235, 0.15);
+  --bg: #ffffff;
+  --text: #0f172a;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,17 +23,20 @@
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: var(--bg);
-  color: #fff;
+  /* Premium AJA TECH Dot Grid Pattern Background */
+  background-image: radial-gradient(var(--blue-soft) 1.5px, transparent 1.5px);
+  background-size: 30px 30px;
+  color: var(--text);
   overflow: hidden;
   height: 100vh;
   width: 100vw;
 }
 
 /* Fluid Typography */
-h1 { font-size: clamp(32px, 5.5vw, 96px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 800; }
-h2 { font-size: clamp(24px, 3.5vw, 64px); line-height: 1.1; letter-spacing: -0.01em; font-weight: 700; }
-h3 { font-size: clamp(18px, 2.2vw, 32px); font-weight: 600; }
-p { font-size: clamp(14px, 1.1vw, 20px); line-height: 1.6; opacity: 0.9; }
+h1 { font-size: clamp(32px, 5.5vw, 96px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 800; color: var(--text); }
+h2 { font-size: clamp(24px, 3.5vw, 64px); line-height: 1.1; letter-spacing: -0.01em; font-weight: 700; color: var(--text); }
+h3 { font-size: clamp(18px, 2.2vw, 32px); font-weight: 600; color: var(--text); }
+p { font-size: clamp(14px, 1.1vw, 20px); line-height: 1.6; opacity: 0.8; }
 
 /* Presentation Engine */
 .pres { position: relative; width: 100%; height: 100%; }
@@ -41,22 +47,22 @@ p { font-size: clamp(14px, 1.1vw, 20px); line-height: 1.6; opacity: 0.9; }
   flex-direction: column;
   padding: 4.5% 6%;
   opacity: 0;
-  transform: scale(1.05);
+  transform: scale(1.02);
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
   z-index: 1;
 }
 .slide.active { opacity: 1; transform: scale(1); pointer-events: auto; z-index: 10; }
-.slide.past { opacity: 0; transform: scale(0.95); }
+.slide.past { opacity: 0; transform: scale(0.98); }
 
 /* Layout Components */
 .grid-cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4%; height: 100%; align-items: center; }
 .flex-center { display: flex; flex-direction: column; justify-content: center; height: 100%; }
 
-/* Liquid Glass Cards */
+/* Frosted Glass Cards */
 .glass {
-  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
-  backdrop-filter: blur(24px) saturate(1.4);
+  background: var(--glass);
+  backdrop-filter: blur(32px) saturate(1.8);
   border: 1px solid var(--border);
   border-radius: 24px;
   padding: 5%;
@@ -64,14 +70,7 @@ p { font-size: clamp(14px, 1.1vw, 20px); line-height: 1.6; opacity: 0.9; }
   overflow: hidden;
   display: flex;
   flex-direction: column;
-}
-.glass::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: radial-gradient(circle at top left, rgba(255,255,255,0.05) 0%, transparent 60%);
-  pointer-events: none;
+  box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.1);
 }
 
 /* Asset Framing */
@@ -81,11 +80,12 @@ p { font-size: clamp(14px, 1.1vw, 20px); line-height: 1.6; opacity: 0.9; }
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--border);
-  background: rgba(255,255,255,0.02);
+  background: #f8fafc;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .asset-frame img, .asset-frame video {
@@ -102,18 +102,15 @@ p { font-size: clamp(14px, 1.1vw, 20px); line-height: 1.6; opacity: 0.9; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.02);
-  color: rgba(255,255,255,0.2);
+  background: rgba(37, 99, 235, 0.02);
+  color: var(--blue);
+  opacity: 0.5;
   font-size: 11px;
   text-align: center;
 }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-/* Video Background */
-.video-wrap { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
-.video-wrap video { width: 100%; height: 100%; object-fit: cover; }
 
 /* Controls */
 .controls {
@@ -131,14 +128,14 @@ p { font-size: clamp(14px, 1.1vw, 20px); line-height: 1.6; opacity: 0.9; }
 body:hover .controls { opacity: 1; }
 
 .prog-bar { display: flex; gap: 8px; }
-.dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: 0.3s; }
-.dot.active { width: 24px; border-radius: 10px; background: #fff; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,0,0,0.1); transition: 0.3s; }
+.dot.active { width: 24px; border-radius: 10px; background: var(--blue); }
 
 .nav-btns { display: flex; gap: 12px; }
 .btn { 
-  background: rgba(255,255,255,0.1); 
-  border: none; 
-  color: #fff; 
+  background: rgba(255, 255, 255, 0.9); 
+  border: 1px solid var(--border);
+  color: var(--text); 
   padding: 12px; 
   border-radius: 50%; 
   cursor: pointer; 
@@ -147,7 +144,7 @@ body:hover .controls { opacity: 1; }
   align-items: center;
   justify-content: center;
 }
-.btn:hover { background: rgba(255,255,255,0.2); }
+.btn:hover { background: #fff; transform: translateY(-2px); border-color: var(--blue); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15); }
 
 /* Animations */
 @keyframes fadeInUp {
@@ -164,48 +161,49 @@ body:hover .controls { opacity: 1; }
 <div class="pres" id="deck">
   
   <!-- SLIDE 1: COVER -->
-  <section class="slide active" data-video="https://stream.mux.com/JNJEOYI6B3EffB9f5ZhpGbuxzc6gSyJcXaCBbCgZKRg.m3u8">
-    <div class="video-wrap"><video id="v1" loop muted playsinline></video></div>
+  <section class="slide active">
     <div class="flex-center">
-      <header class="animate" style="margin-bottom: 24px; display: flex; align-items: center; gap: 16px;">
-        <i data-lucide="activity" style="color: var(--emerald); width: 48px; height: 48px;"></i>
-        <span style="font-weight: 800; font-size: 20px; letter-spacing: 4px;">GANZA</span>
+      <header class="animate" style="margin-bottom: 32px; display: flex; align-items: center; gap: 16px;">
+        <i data-lucide="activity" style="color: var(--blue); width: 56px; height: 56px;"></i>
+        <div style="display: flex; flex-direction: column;">
+            <span style="font-weight: 800; font-size: 24px; letter-spacing: 5px; color: var(--blue);">GANZA</span>
+            <span style="font-size: 11px; opacity: 0.7; letter-spacing: 1.5px; font-weight: 700; color: var(--text);">AJA TECH IN PARTNERSHIP WITH ATRDA</span>
+        </div>
       </header>
       <h1 class="animate">National Digital Sports Infrastructure</h1>
-      <p class="animate delay-1" style="font-size: 32px; margin-top: 16px; opacity: 0.8; max-width: 80%;">
+      <p class="animate delay-1" style="font-size: 34px; margin-top: 20px; opacity: 0.9; max-width: 85%;">
         Industrializing Innovation: The Evolution from Technical Prototype to Sovereign National Utility
       </p>
-      <div class="animate delay-2" style="margin-top: 48px; display: flex; gap: 32px; align-items: center;">
-        <div style="height: 1px; width: 60px; background: var(--emerald);"></div>
+      <div class="animate delay-2" style="margin-top: 60px; display: flex; gap: 32px; align-items: center;">
+        <div style="height: 1.5px; width: 80px; background: var(--blue);"></div>
         <div>
-          <p style="font-weight: 700; opacity: 1;">AJA TECH</p>
-          <p style="opacity: 0.6; font-size: 14px;">Presented February 2026 — Executive Value Brief</p>
+          <h3 style="font-weight: 800; color: var(--blue); font-size: 18px;">Executive Strategic Brief</h3>
+          <p style="opacity: 0.6; font-size: 15px; font-weight: 500;">Project Lifecycle Roadmap — 2026</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SLIDE 2: EXECUTIVE SUMMARY -->
-  <section class="slide" data-video="https://stream.mux.com/Kec29dVyJgiPdtWaQtPuEiiGHkJIYQAVUJcNiIHUYeo.m3u8">
-    <div class="video-wrap"><video id="v2" loop muted playsinline></video></div>
+  <section class="slide">
     <div class="grid-cols-2">
       <div class="animate flex-center">
         <h2>Executive Summary</h2>
-        <p style="margin-top: 24px;">Rwanda's athletes are national assets. Ganza is a purpose-built digital infrastructure that transforms how Rwanda identifies, develops, protects, and monetizes its sporting talent.</p>
-        <p style="margin-top: 16px; font-weight: 600; color: var(--emerald);">It is a national operating system for sports — a sovereign platform that turns every registered athlete into a verified, trackable, and exportable digital asset.</p>
-        <p style="margin-top: 16px; font-size: 14px; opacity: 0.7;">Ganza fulfills Vision 2050 goals by replacing fragmented spreadsheets with a "Digital Backbone" that attracts foreign currency through data-verified transfers.</p>
+        <p style="margin-top: 24px;">Rwanda's athletes are national assets. Ganza — developed by AJA TECH in partnership with ATRDA — is a purpose-built digital infrastructure that transforms how the sports ecosystem identifies, develops, protects, and monetizes sporting talent.</p>
+        <p style="margin-top: 16px; font-weight: 600; color: var(--blue);">It is a national operating system for sports — a sovereign platform that turns every registered athlete into a verified, trackable, and exportable digital asset.</p>
+        <p style="margin-top: 16px; font-size: 14px; opacity: 0.7;">Ganza fulfills strategic goals by replacing fragmented systems with a unified "Digital Backbone" that attracts investment through data-verified performance.</p>
       </div>
       <div class="animate delay-1" style="display: flex; align-items: center;">
         <div class="glass" style="width: 100%; aspect-ratio: 4/5; justify-content: space-between;">
            <div>
-              <p style="opacity: 0.7; font-size: 14px; margin-bottom: 8px;">Strategic Alignment</p>
+              <p style="opacity: 0.6; font-size: 12px; margin-bottom: 8px; font-weight: 700; color: var(--blue);">STRATEGIC ALIGNMENT</p>
               <h3 style="margin-bottom: 24px;">Vision 2050 & NST2</h3>
            </div>
            <div class="asset-frame" style="flex-grow: 1;">
-              <img src="DAashboar ministry.png" alt="Vision 2050 Dashboard" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <img src="DAashboar ministry.png" alt="Strategic Dashboard" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
               <div class="placeholder-text" style="display:none;">
                 <i data-lucide="image" size="32"></i>
-                <p>Ministry Strategic Dashboard UI</p>
+                <p>Strategic Dashboard UI Overview</p>
               </div>
            </div>
         </div>
@@ -219,11 +217,10 @@ body:hover .controls { opacity: 1; }
       <h2>Platform Architecture</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 24px; flex: 1;">
-      <!-- Top Row: Cards -->
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex-shrink: 0;">
         <div class="glass animate delay-1" style="padding: 24px;">
           <div style="display: flex; gap: 20px; align-items: start;">
-            <i data-lucide="layers" style="color: var(--emerald);"></i>
+            <i data-lucide="layers" style="color: var(--blue);"></i>
             <div>
               <h3>95+ Screens Designed</h3>
               <p style="font-size: 14px; opacity: 0.8;">Full prototype implementation-ready ecosystem.</p>
@@ -232,28 +229,27 @@ body:hover .controls { opacity: 1; }
         </div>
         <div class="glass animate delay-1" style="padding: 24px;">
           <div style="display: flex; gap: 20px; align-items: start;">
-            <i data-lucide="users" style="color: var(--emerald);"></i>
+            <i data-lucide="users" style="color: var(--blue);"></i>
             <div>
               <h3>7 Distinct Personas</h3>
-              <p style="font-size: 14px; opacity: 0.8;">Modules for Athletes, Medics, Scouts, and Executives.</p>
+              <p style="font-size: 14px; opacity: 0.8;">Modules for Athletes, Medics, Scouts, and Stakeholders.</p>
             </div>
           </div>
         </div>
       </div>
-      <!-- Bottom Row: Two Images -->
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex-grow: 1; min-height: 0;">
         <div class="animate delay-3 asset-frame">
           <img src="Login page_Ganza.png" alt="Ganza Login" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="placeholder-text" style="display:none;">
             <i data-lucide="monitor" size="40"></i>
-            <p>UI View A: System Gateway</p>
+            <p>UI Snapshot: Portal Gateway</p>
           </div>
         </div>
         <div class="animate delay-3 asset-frame">
-          <img src="Login page_2.png" alt="System Health" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="System health.png" alt="System Health" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="placeholder-text" style="display:none;">
             <i data-lucide="layout" size="40"></i>
-            <p>UI View B: System Health Readiness</p>
+            <p>UI Snapshot: System Readiness</p>
           </div>
         </div>
       </div>
@@ -261,27 +257,26 @@ body:hover .controls { opacity: 1; }
   </section>
 
   <!-- SLIDE 4: THE STRATEGIC ROI -->
-  <section class="slide" data-video="https://stream.mux.com/fHfa8VIbBdqZelLGg5thjsypZ101M01dbyIMLNDWQwlLA.m3u8">
-    <div class="video-wrap"><video id="v3" loop muted playsinline></video></div>
+  <section class="slide">
     <div class="animate" style="margin-bottom: 32px;">
       <h2>Economic & Social Return</h2>
     </div>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; flex: 1;">
       <div class="glass animate delay-1">
-        <h3 style="color: var(--emerald); font-size: 22px; margin-bottom: 12px;">Medical Passport</h3>
-        <p>Standardized injury prevention and healthcare tracking to ensure the longevity of national assets.</p>
+        <h3 style="color: var(--blue); font-size: 22px; margin-bottom: 12px;">Medical Passport</h3>
+        <p>Standardized injury prevention and healthcare tracking to ensure the longevity of high-value sports assets.</p>
       </div>
       <div class="glass animate delay-1">
-        <h3 style="color: var(--emerald); font-size: 22px; margin-bottom: 12px;">Data Monetization</h3>
-        <p>Increasing athlete market value through objective, verified performance metrics.</p>
+        <h3 style="color: var(--blue); font-size: 22px; margin-bottom: 12px;">Data Monetization</h3>
+        <p>Increasing athlete market value through objective, verified performance metrics for scouting and transfers.</p>
       </div>
       <div class="glass animate delay-2">
-        <h3 style="color: var(--emerald); font-size: 22px; margin-bottom: 12px;">Admin Integrity</h3>
-        <p>Eliminating age-cheating and fraud via a biometric Digital ID system.</p>
+        <h3 style="color: var(--blue); font-size: 22px; margin-bottom: 12px;">Admin Integrity</h3>
+        <p>Eliminating fraud and inefficiency via a secure, biometric-linked Digital ID system for all participants.</p>
       </div>
       <div class="glass animate delay-2">
-        <h3 style="color: var(--emerald); font-size: 22px; margin-bottom: 12px;">Performance Science</h3>
-        <p>Applying Long-Term Athlete Development (LTAD) frameworks for global competitiveness.</p>
+        <h3 style="color: var(--blue); font-size: 22px; margin-bottom: 12px;">Performance Science</h3>
+        <p>Applying Long-Term Athlete Development (LTAD) frameworks to secure global sporting competitiveness.</p>
       </div>
     </div>
   </section>
@@ -293,61 +288,58 @@ body:hover .controls { opacity: 1; }
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; width: 100%;">
         <div class="glass animate delay-1">
           <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
-            <div style="background: var(--emerald); color: black; font-weight: 800; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">1</div>
+            <div style="background: var(--blue); color: white; font-weight: 800; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">1</div>
             <h3 style="font-size: 20px;">Foundation (Y1)</h3>
           </div>
-          <p style="font-size: 14px;">Core Infrastructure & National Athlete Registry (FERWAFA/FERWABA initial onboarding).</p>
+          <p style="font-size: 14px;">Core Infrastructure & National Athlete Registry rollout. Initial onboarding for major federations.</p>
         </div>
         <div class="glass animate delay-1">
           <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
-            <div style="background: var(--emerald); color: black; font-weight: 800; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">2</div>
+            <div style="background: var(--blue); color: white; font-weight: 800; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">2</div>
             <h3 style="font-size: 20px;">Operations (Y1)</h3>
           </div>
-          <p style="font-size: 14px;">Activation of 7 Persona use-cases, medical passports, and transfer management.</p>
+          <p style="font-size: 14px;">Activation of 7 Persona use-cases, medical passports, and transfer management systems.</p>
         </div>
         <div class="glass animate delay-2">
           <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
-            <div style="background: var(--emerald); color: black; font-weight: 800; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">3</div>
+            <div style="background: var(--blue); color: white; font-weight: 800; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">3</div>
             <h3 style="font-size: 20px;">Scale-up (Y2)</h3>
           </div>
           <p style="font-size: 14px;">Full Multi-Federation rollout. Transitioning to the entire national sports ecosystem.</p>
         </div>
         <div class="glass animate delay-2">
           <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
-            <div style="background: var(--emerald); color: black; font-weight: 800; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">4</div>
+            <div style="background: var(--blue); color: white; font-weight: 800; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">4</div>
             <h3 style="font-size: 20px;">Governance (Y2)</h3>
           </div>
-          <p style="font-size: 14px;">Public API deployment for health centers and research units to drive national policy.</p>
+          <p style="font-size: 14px;">Public API deployment for research units to drive data-led strategic policy.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 6: INTELLIGENCE PIPELINE (SCROLLABLE + MINIMIZED TEXT) -->
-  <section class="slide" style="background: linear-gradient(to bottom, #000, #041611);">
+  <!-- SLIDE 6: INTELLIGENCE PIPELINE (SCROLLABLE) -->
+  <section class="slide">
     <div class="animate" style="margin-bottom: 20px;">
-      <span style="color: var(--emerald); font-weight: 700; letter-spacing: 2px; font-size: 13px;">YEAR 3: INTELLIGENCE ENGINE</span>
+      <span style="color: var(--blue); font-weight: 700; letter-spacing: 2px; font-size: 13px;">YEAR 3: INTELLIGENCE ENGINE</span>
       <h2 style="margin-top: 4px; font-size: clamp(24px, 3vw, 48px);">The Intelligence Pipeline</h2>
     </div>
     
-    <!-- Scrollable container -->
-    <div class="no-scrollbar" style="display: flex; flex-direction: column; gap: 32px; flex: 1; overflow-y: auto; padding-bottom: 40px;">
-      
-      <!-- Top Row: Compact Text + Video 1 -->
-      <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 24px; min-height: 240px; flex-shrink: 0;">
+    <div class="no-scrollbar" style="display: flex; flex-direction: column; gap: 24px; flex: 1; overflow-y: auto; padding-bottom: 40px;">
+      <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 24px; min-height: 220px; flex-shrink: 0;">
         <div class="glass animate delay-1" style="padding: 20px; justify-content: center;">
           <h3 style="font-size: 18px; margin-bottom: 12px;">Phase 5 & 6 Objectives</h3>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
             <li style="display: flex; gap: 10px; align-items: start;">
-              <i data-lucide="check-circle" style="color: var(--emerald); flex-shrink: 0; width: 16px; margin-top: 3px;"></i>
+              <i data-lucide="check-circle" style="color: var(--blue); flex-shrink: 0; width: 16px; margin-top: 3px;"></i>
               <p style="font-size: 13px;"><strong>Intelligence:</strong> AI Analytics for match tracking & tactics.</p>
             </li>
             <li style="display: flex; gap: 10px; align-items: start;">
-              <i data-lucide="check-circle" style="color: var(--emerald); flex-shrink: 0; width: 16px; margin-top: 3px;"></i>
+              <i data-lucide="check-circle" style="color: var(--blue); flex-shrink: 0; width: 16px; margin-top: 3px;"></i>
               <p style="font-size: 13px;"><strong>Capability:</strong> Global Scout-ready performance data.</p>
             </li>
             <li style="display: flex; gap: 10px; align-items: start;">
-              <i data-lucide="check-circle" style="color: var(--emerald); flex-shrink: 0; width: 16px; margin-top: 3px;"></i>
+              <i data-lucide="check-circle" style="color: var(--blue); flex-shrink: 0; width: 16px; margin-top: 3px;"></i>
               <p style="font-size: 13px;"><strong>Export:</strong> Leading Africa in sports intelligence technology.</p>
             </li>
           </ul>
@@ -356,35 +348,33 @@ body:hover .controls { opacity: 1; }
            <video src="R3_3DZg92Vm9qb1G.mp4" autoplay loop muted playsinline onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>
            <div class="placeholder-text" style="display:none;">
              <i data-lucide="play" size="24"></i>
-             <p>Tactical AI Demo Placeholder</p>
+             <p>Tactical Computer Vision Demo</p>
            </div>
-           <p style="position: absolute; bottom: 8px; left: 12px; font-size: 10px; opacity: 0.6;">YOLO Tactical Analysis</p>
+           <p style="position: absolute; bottom: 8px; left: 12px; font-size: 10px; opacity: 0.6; color: var(--text);">Intelligence Engine Analysis</p>
         </div>
       </div>
       
-      <!-- Bottom Row: Large Isolated Video 2 -->
       <div class="animate delay-3" style="flex-shrink: 0; height: 420px; width: 100%;">
         <div class="asset-frame">
            <video src="tBnfhq2XGQnPwBPj.mp4" autoplay loop muted playsinline onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>
            <div class="placeholder-text" style="display:none;">
              <i data-lucide="play" size="32"></i>
-             <p>Predictive Scouting & Performance Demo Placeholder</p>
+             <p>Predictive Scouting & Performance Intelligence Demo</p>
            </div>
-           <p style="position: absolute; bottom: 12px; left: 16px; font-size: 12px; opacity: 0.8; font-weight: 500;">Scouting Intelligence & Predictive Load Models</p>
+           <p style="position: absolute; bottom: 12px; left: 16px; font-size: 12px; opacity: 0.8; font-weight: 600; color: var(--text);">Scouting Intelligence & Predictive Load Models</p>
         </div>
       </div>
-      
     </div>
   </section>
 
   <!-- SLIDE 7: CONCLUSION -->
-  <section class="slide" data-video="https://stream.mux.com/4IMYGcL01xjs7ek5ANO17JC4VQVUTsojZlnw4fXzwSxc.m3u8">
-    <div class="video-wrap"><video id="v4" loop muted playsinline></video></div>
+  <section class="slide">
     <div class="flex-center text-center" style="text-align: center;">
-      <h2 class="animate" style="max-width: 80%; margin: 0 auto;">"The question is not whether Rwanda will digitize its sports ecosystem. The question is whether Rwanda will lead — or follow."</h2>
+      <h2 class="animate" style="max-width: 80%; margin: 0 auto; color: var(--blue);">"Care for a prototype demo or any technical questions?"</h2>
       <div class="animate delay-1" style="margin-top: 60px;">
-        <h3 style="color: var(--emerald);">Ganza: Fulfilling the Vision 2050 Mandate</h3>
-        <p style="margin-top: 16px; opacity: 0.6; font-size: 15px;">AJA TECH · Kigali, Rwanda · © 2026</p>
+        <h3 style="color: var(--text); font-weight: 800;">Ganza: Fulfilling the National Mandate</h3>
+        <p style="margin-top: 16px; opacity: 0.6; font-size: 15px; font-weight: 600;">Kigali, Rwanda · 2026</p>
+        <p style="font-size: 11px; opacity: 0.7; margin-top: 10px; font-weight: 700; letter-spacing: 1px; color: var(--blue);">AJA TECH IN PARTNERSHIP WITH ATRDA</p>
       </div>
     </div>
   </section>
@@ -412,28 +402,11 @@ slides.forEach((_, i) => {
   prog.appendChild(dot);
 });
 
-function initVideo(slide) {
-  const video = slide.querySelector('.video-wrap video');
-  const src = slide.dataset.video;
-  if (!video || !src) return;
-
-  if (Hls.isSupported()) {
-    const hls = new Hls({ enableWorker: true });
-    hls.loadSource(src);
-    hls.attachMedia(video);
-    hls.on(Hls.Events.MANIFEST_PARSED, () => video.play().catch(() => {}));
-  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-    video.src = src;
-    video.play().catch(() => {});
-  }
-}
-
 function update() {
   slides.forEach((s, i) => {
     s.classList.remove('active', 'past');
     if (i === current) {
       s.classList.add('active');
-      initVideo(s);
     } else if (i < current) {
       s.classList.add('past');
     }
@@ -453,7 +426,7 @@ window.addEventListener('keydown', (e) => {
   if (e.key === 'f') document.documentElement.requestFullscreen();
 });
 
-window.onload = () => { initVideo(slides[0]); };
+window.onload = () => { update(); };
 </script>
 
 </body>
